@@ -29,6 +29,8 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+        <HeaderOption avatar={"https://randomwordgenerator.com/img/picture-generator/51e4d7444c54b10ff3d8992cc12c30771037dbf85254794e73277bd69e4f_640.jpg"} title="Me" />
+
       </div>
 
     </div>
