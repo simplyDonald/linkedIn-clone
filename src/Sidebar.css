@@ -26,7 +26,7 @@
 
 .sidebar__top > h4 {
   color: gray;
-  font-size: 12px;
+  font-size: 13px;
   /* padding: 5px; */
 }
 
@@ -51,7 +51,7 @@
 
 .sidebar__stat > p {
   color: gray;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
 }
 
