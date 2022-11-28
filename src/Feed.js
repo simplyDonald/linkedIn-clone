@@ -12,6 +12,11 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
 
+  const sendPost = e => {
+    e.preventDefault();
+    
+  }
+
   return (
     <div className="feed">
       <div className="feed__inputContainer">
@@ -19,7 +24,7 @@ function Feed() {
           <CreateIcon />
           <form>
             <input type="text" />
-            <button type='Submit'> Send</button>
+            <button type='Submit' onClick={sendPost}> Send</button>
           </form>
         </div>
 

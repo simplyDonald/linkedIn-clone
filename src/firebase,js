@@ -1,3 +1,5 @@
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCcmpwAekYu1HP3_Y71L0BI7RyRJcUV1qA",
   authDomain: "linkedin-clone-2ec1c.firebaseapp.com",
