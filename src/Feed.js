@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Feed.css';
 import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
@@ -8,24 +8,66 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
 import {db} from './firebase';                                
+import { addDoc, collection } from 'firebase/firestore';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
 
+  const inputRef = useRef(null);
+
+  
+
+    
+
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => (
-      setPosts(snapshot.docs.map(doc => (
-        {
-          id: doc.id,
-          data: doc.data(),
-        }
-      )))
-    ))
+    // check db for changes using .OnSnapshot method and update state
+    // db.collection('posts').onSnapshot(snapshot => (
+    //   setPosts(snapshot.docs.map(doc => (
+    //     {
+    //       id: doc.id,
+    //       data: doc.data(),
+    //     }
+    //   )))
+    // ))
+  
+
   },[])
 
+  const dbRef = collection(db, 'posts')
 
-  const sendPost = e => {
+  const sendPost = async(e) => {
     e.preventDefault();
+    // Add a new document with a generated id.
+    console.log(inputRef.current.value);
+    inputRef.current.value = '';
+  
+      await addDoc(dbRef, {
+      name: 'Tokyo',
+      description: 'Japan',
+      message: inputRef.current.value
+      }).then(
+        (docRef) => {
+          // console.log('Added document with ID: ', docRef.id);
+
+        }
+      ).catch((error) =>{
+        console.log('Error adding document: ', error.msg);
+      } );
+  
+
+      
+      
+    
+    
+
+    // add post to db
+    // db.collection('posts').add({
+    //   name: 'John Doe',
+    //   description: 'This is a test',
+    //   message: 'This is a message',
+    // })
+
+  
 
   }
 
@@ -35,7 +77,7 @@ function Feed() {
         <div className="feed__input">
           <CreateIcon />
           <form>
-            <input type="text" />
+            <input ref={inputRef} type="text" />
             <button type='Submit' onClick={sendPost}> Send</button>
           </form>
         </div>
