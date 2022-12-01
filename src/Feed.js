@@ -7,8 +7,9 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
-import {db} from './firebase';                                
-import { addDoc, collection } from 'firebase/firestore';
+import {db} from './firebase';  
+// V9 firebase                               // 
+// import { addDoc, collection } from 'firebase/firestore';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -21,52 +22,52 @@ function Feed() {
 
   useEffect(() => {
     // check db for changes using .OnSnapshot method and update state
-    // db.collection('posts').onSnapshot(snapshot => (
-    //   setPosts(snapshot.docs.map(doc => (
-    //     {
-    //       id: doc.id,
-    //       data: doc.data(),
-    //     }
-    //   )))
-    // ))
+    db.collection('posts').onSnapshot(snapshot => (
+      setPosts(snapshot.docs.map(doc => (
+        {
+          id: doc.id,
+          data: doc.data(),
+        }
+      )))
+    ))
   
 
   },[])
 
-  const dbRef = collection(db, 'posts')
+  // const dbRef = collection(db, 'posts')
 
   const sendPost = async(e) => {
     e.preventDefault();
     // Add a new document with a generated id.
-    console.log(inputRef.current.value);
-    inputRef.current.value = '';
-  
-      await addDoc(dbRef, {
-      name: 'Tokyo',
-      description: 'Japan',
-      message: inputRef.current.value
-      }).then(
-        (docRef) => {
-          // console.log('Added document with ID: ', docRef.id);
-
-        }
-      ).catch((error) =>{
-        console.log('Error adding document: ', error.msg);
-      } );
-  
-
-      
-      
     
-    
-
-    // add post to db
-    // db.collection('posts').add({
-    //   name: 'John Doe',
-    //   description: 'This is a test',
-    //   message: 'This is a message',
-    // })
-
+    // await addDoc(dbRef, {
+      // name: 'Tokyo',
+      // description: 'Japan',
+      // message: inputRef.current.value
+      // }).then(
+        //   (docRef) => {
+          //     // console.log('Added document with ID: ', docRef.id);
+          
+          //   }
+          // ).catch((error) =>{
+            //   console.log('Error adding document: ', error.msg);
+            // } );
+            
+            
+            
+            
+            
+            
+            
+            // add post to db V* firebase
+            db.collection('posts').add({
+              name: 'John Doe',
+              description: 'This is a test',
+              message: inputRef.current.value,
+            })
+            
+            console.log(inputRef.current.value);
+            inputRef.current.value = '';
   
 
   }
@@ -94,7 +95,7 @@ function Feed() {
       {/* Post */}
       {/* map through the set posts array */}
       {posts?.map((post) => (
-        <Post name={post?.name} description={post?.description} message={post?.message} />
+        <Post name={post.data.name} description={post.data.description} message={post.data.message} />
 
       ))}
     </div>
