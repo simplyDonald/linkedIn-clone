@@ -8,6 +8,7 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
 import {db} from './firebase';  
+import firebase from 'firebase';
 // V9 firebase                               // 
 // import { addDoc, collection } from 'firebase/firestore';
 
@@ -38,7 +39,7 @@ function Feed() {
 
   const sendPost = async(e) => {
     e.preventDefault();
-    // Add a new document with a generated id.
+    // Add a new document with a generated id V9 firebase
     
     // await addDoc(dbRef, {
       // name: 'Tokyo',
@@ -58,15 +59,14 @@ function Feed() {
             
             
             
-            
-            // add post to db V* firebase
+            // add post to db V8 firebase
             db.collection('posts').add({
               name: 'John Doe',
               description: 'This is a test',
               message: inputRef.current.value,
+              photoUrl: 'https://images.unsplash.com/photo-1668603146337-be7fcd268306?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+              timestamp: firebase.firestore.FieldValue.serverTimestamp()
             })
-            
-            console.log(inputRef.current.value);
             inputRef.current.value = '';
   
 
@@ -93,9 +93,9 @@ function Feed() {
       </div>
 
       {/* Post */}
-      {/* map through the set posts array */}
-      {posts?.map((post) => (
-        <Post name={post.data.name} description={post.data.description} message={post.data.message} />
+      {/* map through the state's posts array */}
+      {posts?.map(({id, data:{name, description,message, photoUrl}}) => (
+        <Post key={id} name={name} description={description} message={message} photoUrl={photoUrl} />
 
       ))}
     </div>
