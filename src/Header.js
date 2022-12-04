@@ -16,10 +16,10 @@ function Header() {
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
-    // logout function call for firebase auth
-    auth.signOut();
     // dispatch the logout action to your redux store
     dispatch(logout());
+    // logout function call for firebase auth
+    auth.signOut();
   };
 
   return (
