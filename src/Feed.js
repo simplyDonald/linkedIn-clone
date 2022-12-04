@@ -23,7 +23,7 @@ function Feed() {
 
   useEffect(() => {
     // check db for changes using .OnSnapshot method and update state
-    db.collection('posts').onSnapshot(snapshot => (
+    db.collection('posts').orderBy("timestamp","desc").onSnapshot(snapshot => (
       setPosts(snapshot.docs.map(doc => (
         {
           id: doc.id,
@@ -39,35 +39,15 @@ function Feed() {
 
   const sendPost = async(e) => {
     e.preventDefault();
-    // Add a new document with a generated id V9 firebase
-    
-    // await addDoc(dbRef, {
-      // name: 'Tokyo',
-      // description: 'Japan',
-      // message: inputRef.current.value
-      // }).then(
-        //   (docRef) => {
-          //     // console.log('Added document with ID: ', docRef.id);
-          
-          //   }
-          // ).catch((error) =>{
-            //   console.log('Error adding document: ', error.msg);
-            // } );
-            
-            
-            
-            
-            
-            
-            // add post to db V8 firebase
-            db.collection('posts').add({
-              name: 'John Doe',
-              description: 'This is a test',
-              message: inputRef.current.value,
-              photoUrl: 'https://images.unsplash.com/photo-1668603146337-be7fcd268306?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-              timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            inputRef.current.value = '';
+        // add post to db V8 firebase
+        db.collection('posts').add({
+          name: 'John Doe',
+          description: 'This is a test',
+          message: inputRef.current.value,
+          photoUrl: 'https://images.unsplash.com/photo-1668603146337-be7fcd268306?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        inputRef.current.value = '';
   
 
   }
