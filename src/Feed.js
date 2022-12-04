@@ -9,6 +9,8 @@ import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
 import {db} from './firebase';  
 import firebase from 'firebase';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 // V9 firebase                               // 
 // import { addDoc, collection } from 'firebase/firestore';
 
@@ -16,6 +18,8 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   const inputRef = useRef(null);
+
+  const user = useSelector(selectUser)
 
   
 
@@ -41,10 +45,10 @@ function Feed() {
     e.preventDefault();
         // add post to db V8 firebase
         db.collection('posts').add({
-          name: 'John Doe',
-          description: 'This is a test',
+          name: user.displayName,
+          description: user.email,
           message: inputRef.current.value,
-          photoUrl: 'https://images.unsplash.com/photo-1668603146337-be7fcd268306?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+          photoUrl: user.photoUrl || "",
           timestamp: firebase.firestore.FieldValue.serverTimestamp()
         })
         inputRef.current.value = '';
