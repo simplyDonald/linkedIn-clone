@@ -42,8 +42,9 @@ function Login() {
 
   const loginToApp = (e) => {
     e.preventDefault();
-
+    // Login logic using auth from firebase
     auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
+      // dispatch the login action to your redux store using a structured payload that you want...
       dispatch(login({
         email: userAuth.user.email,
         uid: userAuth.user.uid,
