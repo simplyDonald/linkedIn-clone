@@ -1,6 +1,9 @@
 import './Login.css'
 import { auth } from './firebase'
 import { useState } from 'react';
+import { login } from './features/userSlice';
+import { useDispatch } from 'react-redux';
+
 function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -8,13 +11,35 @@ function Login() {
   const [profilePic, setProfilePic] = useState('');
 
 
-  const register = () => {
 
+  const register = () => {
+    if(!name) {
+      return alert('Please enter a full name')
+    }
   }
+
+  const dispatch = useDispatch();
 
   const loginToApp = (e) => {
     e.preventDefault();
-    // auth
+    // Login logic using auth fornm firebase
+    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+      // update the returned userauth object with the name and profile pic- noiice the updateProfile method and the specific keys to use.
+      userAuth.user.updateProfile({
+        displayName: name,
+        photoURL: profilePic,
+      }).then(() => {
+        // dispatch the login action to your redux store using a structured payload that you want...in this case the user object
+        dispatch(login({
+          email: userAuth.user.email,
+          uid: userAuth.user.uid,
+          displayName: name,
+          photoUrl: profilePic,
+
+        }));
+        alert('User created successfully');
+      })
+    }).catch(error => alert(error.message));
   }
 
   return (
@@ -36,7 +61,7 @@ function Login() {
         <input type="password" value={password} onChange={(e)=>{
           setPassword(e.target.value)
         }}placeholder="Password" />
-        
+
         <button type="submit" onClick={loginToApp}>Sign In</button>
 
       </form>
