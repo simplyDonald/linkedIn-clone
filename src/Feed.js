@@ -77,7 +77,7 @@ function Feed() {
         </div>
       </div>
 
-      {/* Post */}\
+      {/* Post */}
       <FlipMove>
 
       {/* map through the state's posts array */}
