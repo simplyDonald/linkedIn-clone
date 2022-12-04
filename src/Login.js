@@ -12,15 +12,11 @@ function Login() {
 
 
 
-  const register = () => {
+  const register = (e) => {
     if(!name) {
       return alert('Please enter a full name')
     }
-  }
 
-  const dispatch = useDispatch();
-
-  const loginToApp = (e) => {
     e.preventDefault();
     // Login logic using auth fornm firebase
     auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
@@ -39,7 +35,13 @@ function Login() {
         }));
         alert('User created successfully');
       })
-    }).catch(error => alert(error.message));
+    }).catch(error => console.log(error));
+  }
+
+  const dispatch = useDispatch();
+
+  const loginToApp = (e) => {
+    
   }
 
   return (
