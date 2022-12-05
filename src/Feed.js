@@ -12,6 +12,7 @@ import firebase from 'firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import FlipMove from 'react-flip-move';
+import { Avatar } from '@mui/material';
 // V9 firebase                               // 
 // import { addDoc, collection } from 'firebase/firestore';
 
@@ -60,12 +61,19 @@ function Feed() {
   return (
     <div className="feed">
       <div className="feed__inputContainer">
-        <div className="feed__input">
-          <CreateIcon />
-          <form>
-            <input ref={inputRef} type="text" />
-            <button type='Submit' onClick={sendPost}> Send</button>
-          </form>
+        <div className="feed__top">
+          <Avatar src={user.photoUrl} sx={{ width: 56, height: 56 }}> 
+          {/*Avatar renders the props.children if src is not given/trut */}
+            {/* {user.name[0]}psidebar */}
+          </Avatar>
+          <div className="feed__input">
+            <CreateIcon />
+            <form>
+              <input ref={inputRef} type="text" />
+              <button type='Submit' onClick={sendPost}> Send</button>
+            </form>
+          </div>
+
         </div>
 
         <div className="feed__inputOptions">

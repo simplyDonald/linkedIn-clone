@@ -3,6 +3,15 @@
   margin: 0 20px;
 }
 
+.feed__top{
+  display: flex;
+  align-items: center;
+}
+
+.feed__top > Avatar{
+  padding-left: 10px;
+}
+
 .feed__inputContainer {
   background-color: white;
   padding: 10px;
@@ -18,6 +27,9 @@
   padding: 10px;
   color: gray;
   padding-left: 15px;
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .feed__input > form {
