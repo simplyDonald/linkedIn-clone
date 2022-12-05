@@ -34,11 +34,15 @@
   padding: 10px;
 }
 
+.header__search > input::placeholder{
+  font-size: 25px;
+}
+
 .header__search > input {
   outline: none;
   border: none;
   background: none;
-  /* width: 100%; */
+  font-size: 25px;
 }
 
 .header__right {
