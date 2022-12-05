@@ -14,10 +14,15 @@
 .headerOption__title{
   font-size: 12px;
   font-weight: 400;
+  margin-right: 50px;
+
+  
 }
 
 .headerOption__icon {
   object-fit: contain;
-  height: 25px !important;
-  width: 25px !important;;
+  height: 40px !important;
+  width: 40px !important;;
+  margin-right: 50px;
+  margin-top: 10px;
 }

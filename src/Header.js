@@ -38,7 +38,7 @@ function Header() {
       </div>
 
       <div className="header__right">
-        <HeaderOption Icon={HomeIcon} title="Home" />
+        <HeaderOption Icon={HomeIcon} title="Home"  />
         <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />

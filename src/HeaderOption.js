@@ -9,7 +9,7 @@ function HeaderOption({ avatar, Icon, title, onClick }) {
   const user = useSelector(selectUser);
   return (
     <div className='headerOption' onClick={onClick}>
-      {Icon && <Icon className='headerOption__icon' />}
+      {Icon && <Icon className='headerOption__icon'  />}
       {avatar && <Avatar className='headerOption__icon' src={user?.photoUrl}>
         {user?.email[0]}
       </Avatar>}
