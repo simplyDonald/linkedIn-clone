@@ -1,7 +1,7 @@
 .widgets{
   position: sticky;
   top: 80px;
-  flex: 0.2;
+  flex: 0.3;
   background-color: white;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -10,13 +10,16 @@
 }
 
 .widgets__header > h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
 }
 
-/* .widgets__header{
-  display:flex
-} */
+.widgets__header{
+  display:flex;
+  padding: 10px;
+  /* max-width: 300px; */
+  justify-content:space-between;
+}
 
 .widgets__article{
   display: flex;
