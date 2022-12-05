@@ -9,7 +9,7 @@ function Widgets() {
     return (
       <div className="widgets__article">
         <div className="widgets__articleLeft">
-          <FiberManualRecordIcon />
+          <FiberManualRecordIcon className="widgets__icon" />
         </div>
         <div className="widgets__articleRight">
           <h4>{heading}</h4>
@@ -30,7 +30,7 @@ function Widgets() {
       {newsArticle("Tesla hits new highs", "Cars & auto - 300 readers")}
       {newsArticle("Bitcoin breaks $22k", "Crypto - 8000 readers")}
       {newsArticle("Is Redux too good?", "Code - 123 readers")}
-      
+
     </div>
   )
 }
