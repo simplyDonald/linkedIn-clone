@@ -16,7 +16,7 @@ const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
       <div className="post__header">
         <Avatar src={photoUrl}> 
         {/*Avatar renders the props.children if src is not given/trut */}
-          {name[0]}
+          {name?.[0]}
         </Avatar>
         
         <div className="post__info">
