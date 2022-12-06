@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+  import { forwardRef } from 'react';
 import { Avatar } from '@mui/material';
 import './Post.css'
 import InputOption from './InputOption';
