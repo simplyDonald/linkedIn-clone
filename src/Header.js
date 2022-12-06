@@ -36,7 +36,8 @@ function Header() {
 
         </div>
       </div>
-      {user && ( <div className="header__right">
+      
+      <div className="header__right">
         <HeaderOption Icon={HomeIcon} title="Home"  />
         <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
@@ -44,8 +45,7 @@ function Header() {
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
         <HeaderOption avatar={true} title={user.displayName} onClick={logoutOfApp} />
 
-      </div>)}
-     
+      </div>
 
     </div>
     
