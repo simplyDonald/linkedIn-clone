@@ -37,7 +37,6 @@ function Feed() {
         }
       )))
     ))
-  
 
   },[])
 
@@ -89,8 +88,9 @@ function Feed() {
       <FlipMove>
 
       {/* map through the state's posts array */}
-      {posts?.map(({id, data:{name, description,message, photoUrl}}) => (
-        <Post key={id} name={name} description={description} message={message} photoUrl={photoUrl} />
+      {posts?.map(({id, data:{name, description,message, photoUrl,timestamp}}) => (
+        
+        <Post key={id} name={name} description={description} message={message} photoUrl={photoUrl} timestamp={timestamp} />
 
       ))}
       </FlipMove>

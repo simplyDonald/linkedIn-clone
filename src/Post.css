@@ -27,6 +27,26 @@
   font-size: 15px;
 }
 
+.post__icon{
+  height: 6px !important;
+  width: 6px !important;
+  margin-left: 5px;
+}
+.post__public{
+  height: 20px !important;
+  width: 20px !important;
+  margin-left: 5px;
+
+}
+.post__extras{
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  color: gray;
+}
+
+
+
 .post__buttons {
   display: flex;
   /* justify-content: space-evenly; */
