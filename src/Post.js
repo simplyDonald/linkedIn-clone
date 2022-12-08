@@ -13,12 +13,14 @@ import PublicIcon from '@mui/icons-material/Public';
 
 const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref) => {
 
+  
+
   return (
     <div ref={ref} className="post">
       <div className="post__header">
         <Avatar src={photoUrl}> 
         {/*Avatar renders the props.children if src is not given/trut */}
-          {name?.[0]}
+          {name[0]}
         </Avatar>
         
         <div className="post__info">
