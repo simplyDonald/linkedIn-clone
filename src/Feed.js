@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Feed.css';
-import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
 import ImageIcon from '@mui/icons-material/Image';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
@@ -62,11 +61,10 @@ function Feed() {
       <div className="feed__inputContainer">
         <div className="feed__top">
           <Avatar src={user.photoUrl} sx={{ width: 56, height: 56 }}> 
-          {/*Avatar renders the props.children if src is not given/trut */}
-            {/* {user.name[0]}psidebar */}
+          {/*Avatar renders the props.children if src is not given/truthy */}
+            {user.displayName[0]}
           </Avatar>
           <div className="feed__input">
-            <CreateIcon />
             <form>
               <input ref={inputRef} type="text" />
               <button type='Submit' onClick={sendPost}> Send</button>
