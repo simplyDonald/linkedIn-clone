@@ -8,6 +8,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import SendIcon from '@mui/icons-material/Send';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import PublicIcon from '@mui/icons-material/Public';
+import ReactTimeago from 'react-timeago'
 
 
 
@@ -28,7 +29,8 @@ const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, re
           <p>{description}</p>
           <div className='post__extras'>
             <p>{
-              // <ReactTimeAgo date={new Date()} locale="en-US"/>
+              // <ReactTimeAgo date={new Date()} locale="en-US"/>\
+              <ReactTimeago date={new Date(timestamp?.toDate()).toUTCString()}/>
             
             }</p>  
             <FiberManualRecordIcon className="post__icon" /> <PublicIcon className="post__public"/> </div>
